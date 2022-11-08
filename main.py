@@ -2,17 +2,18 @@ import pygame
 import random
 
 pygame.init()
+pygame.display.set_mode((800, 600), pygame.RESIZABLE | pygame.DOUBLEBUF | pygame.HWSURFACE)
 pygame.display.set_caption("Asteroid Game")
-screen = pygame.display.set_mode((800, 600))
+pygame.display.set_icon(pygame.image.load("icon.bmp"))
 
-while True:
+clock = pygame.time.Clock()
+FPS = 60
+
+run = True
+while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            quit()
-    screen.fill("#e63946")
-    x = random.randint(10, 790)
-    y = random.randint(10, 590)
-    r = random.randint(2, 100)
+            pygame.quit()
+            run = False
+    clock.tick(FPS)
 
-    pygame.draw.circle(screen, ("#1d3557"), (x, y), r)
-    pygame.display.flip()
